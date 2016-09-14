@@ -28,7 +28,8 @@ namespace Jeopardy_Editor
 
         public bool FromXML(string newname = "jeopardy-save.xml")
         {
-            if (!File.Exists(newname)) return false;
+            // Return if file doesn't exist, or no rom file has been loaded in.
+            if (!File.Exists(newname) || Catagories.Count < 1) return false;
 
             int i = 0;
             XmlReader xm = XmlReader.Create(newname);

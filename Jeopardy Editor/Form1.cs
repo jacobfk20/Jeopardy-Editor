@@ -33,6 +33,8 @@ namespace Jeopardy_Editor
 
         private void lstCatagories_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (Catagories.Count < 1) return;
+
             int index = SelectedCatagory;
 
             // Save changes before the switch
@@ -120,11 +122,19 @@ namespace Jeopardy_Editor
             
             if (romfile != "")
             {
+                if (!romfile.Contains(".smc"))
+                {
+                    MessageBox.Show("This does not appear to be a SNES ROM.  (Lacks .smc)", "Load ROM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 Catagories.Clear();
                 LoadData load = new LoadData(ref Catagories, ref Pointers);
                 if (load.FromRom(romfile)) reloadCatagoryList();
 
                 lblDeadSpace.Text = Convert.ToString(load.DeadSpace);
+
+                onRomLoad();
             }
         }
 
@@ -151,6 +161,7 @@ namespace Jeopardy_Editor
         private void menuCloseRom_Click(object sender, EventArgs e)
         {
             destroyAllRomData();
+            onRomClose();
         }
 
         private void destroyAllRomData()
@@ -171,6 +182,28 @@ namespace Jeopardy_Editor
                 lblDeadSpace.Text = size * - 1 + " bytes";
                 lblDeadSpace.ForeColor = Color.Black;
             }
+        }
+
+        private void onRomLoad()
+        {
+            menuCloseRom.Enabled = true;
+            menuSaveToRom.Enabled = true;
+            menuSaveToXml.Enabled = true;
+            menuLoadXml.Enabled = true;
+            saveToolStripMenuItem.Enabled = true;
+            viewToolStripMenuItem.Enabled = true;
+            rebuildStructureToolStripMenuItem.Enabled = true;
+        }
+
+        private void onRomClose()
+        {
+            menuCloseRom.Enabled = false;
+            menuSaveToRom.Enabled = false;
+            menuSaveToXml.Enabled = false;
+            menuLoadXml.Enabled = false;
+            saveToolStripMenuItem.Enabled = false;
+            viewToolStripMenuItem.Enabled = false;
+            rebuildStructureToolStripMenuItem.Enabled = false;
         }
 
     }

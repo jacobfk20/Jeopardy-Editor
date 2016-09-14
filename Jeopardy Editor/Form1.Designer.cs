@@ -32,6 +32,8 @@
             this.lstCatagories = new System.Windows.Forms.ListBox();
             this.gbxQA = new System.Windows.Forms.GroupBox();
             this.gbxPointerInfo = new System.Windows.Forms.GroupBox();
+            this.lblSnesAddress = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.lblPointerBank = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.lblPointerAddress = new System.Windows.Forms.Label();
@@ -84,8 +86,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.rebuildStructureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openRom = new System.Windows.Forms.OpenFileDialog();
-            this.label19 = new System.Windows.Forms.Label();
-            this.lblSnesAddress = new System.Windows.Forms.Label();
             this.gbxQA.SuspendLayout();
             this.gbxPointerInfo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -153,6 +153,24 @@
             this.gbxPointerInfo.TabIndex = 30;
             this.gbxPointerInfo.TabStop = false;
             this.gbxPointerInfo.Text = "Pointer Info";
+            // 
+            // lblSnesAddress
+            // 
+            this.lblSnesAddress.AutoSize = true;
+            this.lblSnesAddress.Location = new System.Drawing.Point(137, 65);
+            this.lblSnesAddress.Name = "lblSnesAddress";
+            this.lblSnesAddress.Size = new System.Drawing.Size(13, 13);
+            this.lblSnesAddress.TabIndex = 35;
+            this.lblSnesAddress.Text = "?";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(27, 65);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(80, 13);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "SNES Address:";
             // 
             // lblPointerBank
             // 
@@ -491,61 +509,64 @@
             // menuOpenRom
             // 
             this.menuOpenRom.Name = "menuOpenRom";
-            this.menuOpenRom.Size = new System.Drawing.Size(131, 22);
+            this.menuOpenRom.Size = new System.Drawing.Size(152, 22);
             this.menuOpenRom.Text = "Open Rom";
             this.menuOpenRom.Click += new System.EventHandler(this.menuOpenRom_Click);
             // 
             // menuCloseRom
             // 
+            this.menuCloseRom.Enabled = false;
             this.menuCloseRom.Name = "menuCloseRom";
-            this.menuCloseRom.Size = new System.Drawing.Size(131, 22);
+            this.menuCloseRom.Size = new System.Drawing.Size(152, 22);
             this.menuCloseRom.Text = "Close Rom";
             this.menuCloseRom.Click += new System.EventHandler(this.menuCloseRom_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuSaveToXml,
             this.menuSaveToRom});
+            this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // menuSaveToXml
             // 
             this.menuSaveToXml.Name = "menuSaveToXml";
-            this.menuSaveToXml.Size = new System.Drawing.Size(115, 22);
+            this.menuSaveToXml.Size = new System.Drawing.Size(152, 22);
             this.menuSaveToXml.Text = "To Xml";
             this.menuSaveToXml.Click += new System.EventHandler(this.menuSaveToXml_Click);
             // 
             // menuSaveToRom
             // 
             this.menuSaveToRom.Name = "menuSaveToRom";
-            this.menuSaveToRom.Size = new System.Drawing.Size(115, 22);
+            this.menuSaveToRom.Size = new System.Drawing.Size(152, 22);
             this.menuSaveToRom.Text = "To Rom";
             this.menuSaveToRom.Click += new System.EventHandler(this.menuSaveToRom_Click);
             // 
             // menuLoadXml
             // 
+            this.menuLoadXml.Enabled = false;
             this.menuLoadXml.Name = "menuLoadXml";
-            this.menuLoadXml.Size = new System.Drawing.Size(131, 22);
+            this.menuLoadXml.Size = new System.Drawing.Size(152, 22);
             this.menuLoadXml.Text = "Load Xml";
             this.menuLoadXml.Click += new System.EventHandler(this.menuLoadXml_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(131, 22);
+            this.menuExit.Size = new System.Drawing.Size(152, 22);
             this.menuExit.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -560,6 +581,7 @@
             // 
             // viewToolStripMenuItem
             // 
+            this.viewToolStripMenuItem.Enabled = false;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.viewToolStripMenuItem.Text = "View List";
@@ -572,6 +594,7 @@
             // 
             // rebuildStructureToolStripMenuItem
             // 
+            this.rebuildStructureToolStripMenuItem.Enabled = false;
             this.rebuildStructureToolStripMenuItem.Name = "rebuildStructureToolStripMenuItem";
             this.rebuildStructureToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.rebuildStructureToolStripMenuItem.Text = "Rebuild Structure";
@@ -580,24 +603,6 @@
             // openRom
             // 
             this.openRom.DefaultExt = "smc";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(27, 65);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(80, 13);
-            this.label19.TabIndex = 34;
-            this.label19.Text = "SNES Address:";
-            // 
-            // lblSnesAddress
-            // 
-            this.lblSnesAddress.AutoSize = true;
-            this.lblSnesAddress.Location = new System.Drawing.Point(137, 65);
-            this.lblSnesAddress.Name = "lblSnesAddress";
-            this.lblSnesAddress.Size = new System.Drawing.Size(13, 13);
-            this.lblSnesAddress.TabIndex = 35;
-            this.lblSnesAddress.Text = "?";
             // 
             // Form1
             // 
