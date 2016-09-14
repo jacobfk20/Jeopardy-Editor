@@ -11,6 +11,7 @@ namespace Jeopardy_Editor
     class LoadData
     {
         public int DeadSpace = 0;
+        public string RomName { get; set; }
 
         const int START_OF_TEXT = Globals.ROMFILE_TEXT_BEGIN;
         const int END_OF_TEXT = Globals.ROMFILE_TEXT_END;
@@ -76,6 +77,19 @@ namespace Jeopardy_Editor
         public bool FromRom(string newname = "jeopardy.smc")
         {
             FileStream fs = new FileStream(newname, FileMode.Open);
+
+            // Get Rom Header Title and Check if loaded rom is Jeopardy!
+            fs.Seek(Globals.ROMFILE_HEADER_TITLE_POS, SeekOrigin.Begin);
+            byte[] romByteTitle = new byte[Globals.ROMFILE_HEADER_TITLE_SIZE];
+            string romTitle = "";
+            fs.Read(romByteTitle, 0, Globals.ROMFILE_HEADER_TITLE_SIZE);
+            for (int i = 0; i < romByteTitle.Length; i++)
+                romTitle += Convert.ToChar(romByteTitle[i]);
+
+            RomName = romTitle;
+
+            if (!romTitle.Contains(Globals.ROMFILE_HEADER_TITLE_STRING))
+                return false;
 
             fs.Seek(START_OF_TEXT, SeekOrigin.Begin);
 

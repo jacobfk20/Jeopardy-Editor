@@ -15,6 +15,7 @@ namespace Jeopardy_Editor
     {
         const int START_OF_TEXT = Globals.ROMFILE_TEXT_BEGIN;
         const int END_OF_TEXT = Globals.ROMFILE_TEXT_END;
+        string RomName = "";
 
         int SelectedCatagory = 0;
 
@@ -131,6 +132,14 @@ namespace Jeopardy_Editor
                 Catagories.Clear();
                 LoadData load = new LoadData(ref Catagories, ref Pointers);
                 if (load.FromRom(romfile)) reloadCatagoryList();
+                else {
+                    if (load.RomName != Globals.ROMFILE_HEADER_TITLE_STRING)
+                        MessageBox.Show("Rom Header title mismatch.  Got: " + load.RomName + " Instead of: " + Globals.ROMFILE_HEADER_TITLE_STRING,
+                            "Open Rom", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                RomName = load.RomName;
 
                 lblDeadSpace.Text = Convert.ToString(load.DeadSpace);
 
@@ -193,6 +202,7 @@ namespace Jeopardy_Editor
             saveToolStripMenuItem.Enabled = true;
             viewToolStripMenuItem.Enabled = true;
             rebuildStructureToolStripMenuItem.Enabled = true;
+            lblRomName.Text = RomName;
         }
 
         private void onRomClose()
@@ -204,6 +214,18 @@ namespace Jeopardy_Editor
             saveToolStripMenuItem.Enabled = false;
             viewToolStripMenuItem.Enabled = false;
             rebuildStructureToolStripMenuItem.Enabled = false;
+            lblRomName.Text = "No Rom Loaded";
+            gbxQA.Enabled = false;
+            txtQ1.Clear();
+            txtQ2.Clear();
+            txtQ3.Clear();
+            txtQ4.Clear();
+            txtQ5.Clear();
+            txtA1.Clear();
+            txtA2.Clear();
+            txtA3.Clear();
+            txtA4.Clear();
+            txtA5.Clear();
         }
 
     }
