@@ -38,6 +38,21 @@ namespace Jeopardy_Editor
             return MemoryBank;
         }
 
+        public byte getAddressHigh()
+        {
+            return AddressHigh;
+        }
+
+        public byte getAddressLow()
+        {
+            return AddressLow;
+        }
+
+        public byte getExtraByte()
+        {
+            return ExtraByte;
+        }
+
         public int getBankAddressAsInt()
         {
             return Convert.ToInt32(MemoryBank);

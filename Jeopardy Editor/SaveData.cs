@@ -104,6 +104,18 @@ namespace Jeopardy_Editor
                 
             }
 
+            // ==== WRITE NEW POINTER TABLE ====
+            fs.Seek(Globals.ROMFILE_POINTER_BEGIN, SeekOrigin.Begin);
+            for (int i = 0; i < Catagories.Count; i++)
+            {
+                fs.WriteByte(Catagories[i].pointer.getBankAddress());
+                fs.WriteByte(Catagories[i].pointer.getAddressHigh());
+                fs.WriteByte(Catagories[i].pointer.getAddressLow());
+                fs.Seek(fs.Position + 1, SeekOrigin.Begin);
+                //fs.WriteByte(Catagories[i].pointer.getExtraByte());
+            }
+
+
             fs.Close();
 
             return true;

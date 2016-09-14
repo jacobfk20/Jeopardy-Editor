@@ -16,6 +16,7 @@ namespace Jeopardy_Editor
         const int START_OF_TEXT = Globals.ROMFILE_TEXT_BEGIN;
         const int END_OF_TEXT = Globals.ROMFILE_TEXT_END;
         string RomName = "";
+        string RomFile = "";
 
         int SelectedCatagory = 0;
 
@@ -104,7 +105,7 @@ namespace Jeopardy_Editor
         private void menuSaveToRom_Click(object sender, EventArgs e)
         {
             SaveData save = new SaveData(ref Catagories);
-            save.ToRom();
+            save.ToRom(RomFile);
         }
 
         private void menuLoadXml_Click(object sender, EventArgs e)
@@ -140,6 +141,7 @@ namespace Jeopardy_Editor
                 }
 
                 RomName = load.RomName;
+                RomFile = romfile;
 
                 lblDeadSpace.Text = Convert.ToString(load.DeadSpace);
 
