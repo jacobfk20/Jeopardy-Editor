@@ -19,6 +19,9 @@ namespace Jeopardy_Editor
                 int newAddress = Convert.ToInt32(catagories[i - 1].getAddress());
                 newAddress += catagories[i - 1].getSize();
 
+                // Skip the catagory if it has no pointer.
+                if (catagories[i].pointer == null) continue;
+
                 // Check to make sure this address will not go outside of its bank (32k)
                 int ptr = catagories[i].pointer.getAddress();
                 int bank = catagories[i].pointer.getBankAddress();

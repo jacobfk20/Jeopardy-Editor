@@ -111,8 +111,12 @@ namespace Jeopardy_Editor
         public void setName(string name, string displayname = "")
         {
             if (displayname == "") displayname = name;
-
             realName = displayname + "\\" + name;
+
+            // Remove hard return and caridge return and replace with just /r
+            while (realName.Contains("\r\n"))
+                realName = realName.Replace("\r\n", "\r");
+
             Name = name;
         }
 
@@ -127,6 +131,18 @@ namespace Jeopardy_Editor
         public string getName()
         {
             return Name;
+        }
+
+        public string getDisplayName()
+        {
+            string dname = realName;
+
+            // Add hard returns to make readable
+            dname = addHardReturn(dname);
+
+            int divide = dname.IndexOf("\\");
+            if (divide < 1) return dname;
+            return dname.Substring(0, divide);
         }
 
         public string getFullName(bool saveFormat = false)
@@ -224,6 +240,21 @@ namespace Jeopardy_Editor
                 Size += 2; // For answer type
                 Size += 2; // for null chars between answer/question
             }
+        }
+
+        private string addHardReturn(string str)
+        {
+            string newString = "";
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == 0x0D)
+                    newString += "\r\n";
+                else
+                    newString += str[i];
+            }
+
+            return newString;
         }
     }
 }

@@ -87,6 +87,10 @@
             this.rebuildStructureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openRom = new System.Windows.Forms.OpenFileDialog();
             this.lblRomName = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtCatName = new System.Windows.Forms.TextBox();
+            this.txtCatDisplayName = new System.Windows.Forms.TextBox();
             this.gbxQA.SuspendLayout();
             this.gbxPointerInfo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -105,6 +109,10 @@
             // 
             // gbxQA
             // 
+            this.gbxQA.Controls.Add(this.txtCatDisplayName);
+            this.gbxQA.Controls.Add(this.txtCatName);
+            this.gbxQA.Controls.Add(this.label21);
+            this.gbxQA.Controls.Add(this.label20);
             this.gbxQA.Controls.Add(this.gbxPointerInfo);
             this.gbxQA.Controls.Add(this.lblCatSize);
             this.gbxQA.Controls.Add(this.label15);
@@ -148,9 +156,9 @@
             this.gbxPointerInfo.Controls.Add(this.label17);
             this.gbxPointerInfo.Controls.Add(this.label16);
             this.gbxPointerInfo.Controls.Add(this.lblPointer);
-            this.gbxPointerInfo.Location = new System.Drawing.Point(476, 269);
+            this.gbxPointerInfo.Location = new System.Drawing.Point(476, 338);
             this.gbxPointerInfo.Name = "gbxPointerInfo";
-            this.gbxPointerInfo.Size = new System.Drawing.Size(230, 142);
+            this.gbxPointerInfo.Size = new System.Drawing.Size(230, 73);
             this.gbxPointerInfo.TabIndex = 30;
             this.gbxPointerInfo.TabStop = false;
             this.gbxPointerInfo.Text = "Pointer Info";
@@ -158,7 +166,7 @@
             // lblSnesAddress
             // 
             this.lblSnesAddress.AutoSize = true;
-            this.lblSnesAddress.Location = new System.Drawing.Point(137, 65);
+            this.lblSnesAddress.Location = new System.Drawing.Point(139, 53);
             this.lblSnesAddress.Name = "lblSnesAddress";
             this.lblSnesAddress.Size = new System.Drawing.Size(13, 13);
             this.lblSnesAddress.TabIndex = 35;
@@ -167,7 +175,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(27, 65);
+            this.label19.Location = new System.Drawing.Point(29, 53);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(80, 13);
             this.label19.TabIndex = 34;
@@ -176,7 +184,7 @@
             // lblPointerBank
             // 
             this.lblPointerBank.AutoSize = true;
-            this.lblPointerBank.Location = new System.Drawing.Point(137, 52);
+            this.lblPointerBank.Location = new System.Drawing.Point(139, 40);
             this.lblPointerBank.Name = "lblPointerBank";
             this.lblPointerBank.Size = new System.Drawing.Size(13, 13);
             this.lblPointerBank.TabIndex = 33;
@@ -185,7 +193,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(32, 52);
+            this.label18.Location = new System.Drawing.Point(34, 40);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(75, 13);
             this.label18.TabIndex = 32;
@@ -194,7 +202,7 @@
             // lblPointerAddress
             // 
             this.lblPointerAddress.AutoSize = true;
-            this.lblPointerAddress.Location = new System.Drawing.Point(137, 39);
+            this.lblPointerAddress.Location = new System.Drawing.Point(139, 27);
             this.lblPointerAddress.Name = "lblPointerAddress";
             this.lblPointerAddress.Size = new System.Drawing.Size(13, 13);
             this.lblPointerAddress.TabIndex = 31;
@@ -203,7 +211,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(59, 39);
+            this.label17.Location = new System.Drawing.Point(61, 27);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(48, 13);
             this.label17.TabIndex = 30;
@@ -212,7 +220,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(56, 26);
+            this.label16.Location = new System.Drawing.Point(58, 14);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(51, 13);
             this.label16.TabIndex = 28;
@@ -221,7 +229,7 @@
             // lblPointer
             // 
             this.lblPointer.AutoSize = true;
-            this.lblPointer.Location = new System.Drawing.Point(137, 26);
+            this.lblPointer.Location = new System.Drawing.Point(139, 14);
             this.lblPointer.Name = "lblPointer";
             this.lblPointer.Size = new System.Drawing.Size(13, 13);
             this.lblPointer.TabIndex = 29;
@@ -230,7 +238,7 @@
             // lblCatSize
             // 
             this.lblCatSize.AutoSize = true;
-            this.lblCatSize.Location = new System.Drawing.Point(572, 244);
+            this.lblCatSize.Location = new System.Drawing.Point(615, 322);
             this.lblCatSize.Name = "lblCatSize";
             this.lblCatSize.Size = new System.Drawing.Size(41, 13);
             this.lblCatSize.TabIndex = 27;
@@ -239,7 +247,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(473, 244);
+            this.label15.Location = new System.Drawing.Point(510, 322);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(75, 13);
             this.label15.TabIndex = 26;
@@ -248,7 +256,7 @@
             // lblCatAddress
             // 
             this.lblCatAddress.AutoSize = true;
-            this.lblCatAddress.Location = new System.Drawing.Point(572, 225);
+            this.lblCatAddress.Location = new System.Drawing.Point(615, 303);
             this.lblCatAddress.Name = "lblCatAddress";
             this.lblCatAddress.Size = new System.Drawing.Size(13, 13);
             this.lblCatAddress.TabIndex = 25;
@@ -257,7 +265,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(473, 225);
+            this.label14.Location = new System.Drawing.Point(492, 303);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(93, 13);
             this.label14.TabIndex = 24;
@@ -614,6 +622,39 @@
             this.lblRomName.TabIndex = 9;
             this.lblRomName.Text = "No Rom Loaded";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(484, 225);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(38, 13);
+            this.label20.TabIndex = 31;
+            this.label20.Text = "Name:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(510, 248);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(75, 13);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "Display Name:";
+            // 
+            // txtCatName
+            // 
+            this.txtCatName.Location = new System.Drawing.Point(528, 222);
+            this.txtCatName.Name = "txtCatName";
+            this.txtCatName.Size = new System.Drawing.Size(174, 20);
+            this.txtCatName.TabIndex = 33;
+            // 
+            // txtCatDisplayName
+            // 
+            this.txtCatDisplayName.Location = new System.Drawing.Point(597, 248);
+            this.txtCatDisplayName.Multiline = true;
+            this.txtCatDisplayName.Name = "txtCatDisplayName";
+            this.txtCatDisplayName.Size = new System.Drawing.Size(105, 52);
+            this.txtCatDisplayName.TabIndex = 34;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,6 +748,10 @@
         private System.Windows.Forms.Label lblSnesAddress;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblRomName;
+        private System.Windows.Forms.TextBox txtCatDisplayName;
+        private System.Windows.Forms.TextBox txtCatName;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
     }
 }
 

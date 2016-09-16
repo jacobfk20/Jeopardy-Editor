@@ -50,6 +50,8 @@ namespace Jeopardy_Editor
             if (txtA3.TextLength > 0) Catagories[index].setAnswer(2, txtA3.Text, 4);
             if (txtA4.TextLength > 0) Catagories[index].setAnswer(3, txtA4.Text, 4);
             if (txtA5.TextLength > 0) Catagories[index].setAnswer(4, txtA5.Text, 4);
+            if (txtCatName.TextLength > 0 && txtCatDisplayName.TextLength > 0)
+                Catagories[index].setName(txtCatName.Text, txtCatDisplayName.Text);
 
             int currentIndex = lstCatagories.SelectedIndex;
 
@@ -64,6 +66,9 @@ namespace Jeopardy_Editor
             txtA3.Text = Catagories[lstCatagories.SelectedIndex].getAnswer(2);
             txtA4.Text = Catagories[lstCatagories.SelectedIndex].getAnswer(3);
             txtA5.Text = Catagories[lstCatagories.SelectedIndex].getAnswer(4);
+
+            txtCatName.Text = Catagories[lstCatagories.SelectedIndex].getName();
+            txtCatDisplayName.Text = Catagories[lstCatagories.SelectedIndex].getDisplayName();
 
             lblCatAddress.Text = Convert.ToString(Catagories[lstCatagories.SelectedIndex].getAddress());
             lblCatSize.Text = Convert.ToString(Catagories[lstCatagories.SelectedIndex].getSize()) + " bytes";
