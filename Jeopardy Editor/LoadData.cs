@@ -10,8 +10,15 @@ namespace Jeopardy_Editor
 {
     class LoadData
     {
-        public int DeadSpace = 0;
-        public string RomName { get; set; }
+        public int TotalCatagories { get { return totalCatagories; } }
+        public int DeadSpace { get { return deadSpace; } }
+        public string RomName { get { return romName; } }
+        public int TotalSize { get { return totalSize; } }
+
+        int deadSpace = 0;
+        string romName = "";
+        int totalCatagories = 0;
+        int totalSize = 0;
 
         const int START_OF_TEXT = Globals.ROMFILE_TEXT_BEGIN;
         const int END_OF_TEXT = Globals.ROMFILE_TEXT_END;
@@ -86,7 +93,7 @@ namespace Jeopardy_Editor
             for (int i = 0; i < romByteTitle.Length; i++)
                 romTitle += Convert.ToChar(romByteTitle[i]);
 
-            RomName = romTitle;
+            romName = romTitle;
 
             if (!romTitle.Contains(Globals.ROMFILE_HEADER_TITLE_STRING))
                 return false;
@@ -101,6 +108,7 @@ namespace Jeopardy_Editor
             for (int i = START_OF_TEXT; i < END_OF_TEXT + 1; i++)
             {
                 char t = Convert.ToChar(fs.ReadByte());
+                totalSize++;
 
                 if (t != 0x00)
                 {
@@ -128,10 +136,11 @@ namespace Jeopardy_Editor
                     Array.Clear(rawdata, 0, rawdata.Length);
                     loc = i + 1 + blankspaceTemp;
                     blankspaceTemp = 0;
+                    totalCatagories++;
                 }
             }
 
-            DeadSpace = blankspace;
+            deadSpace = blankspace;
 
             if (Pointers == null) return true;
 

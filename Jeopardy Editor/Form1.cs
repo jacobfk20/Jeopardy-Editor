@@ -142,6 +142,8 @@ namespace Jeopardy_Editor
 
                 RomName = load.RomName;
                 RomFile = romfile;
+                lblTotalCat.Text = load.TotalCatagories.ToString();
+                lblSizeChar.Text = load.TotalSize.ToString();
 
                 lblDeadSpace.Text = Convert.ToString(load.DeadSpace);
 

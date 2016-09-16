@@ -8,6 +8,8 @@ namespace Jeopardy_Editor
 {
     class CatagoryAligner
     {
+        int TextStart = Globals.ROMFILE_TEXT_BEGIN;
+
         public int RebuildStructure(ref List<Catagory> catagories)
         {
             int memorySize = catagories[0].getSize();    // Keeps track of how much all the catagories are taking in space
@@ -17,10 +19,17 @@ namespace Jeopardy_Editor
                 int newAddress = Convert.ToInt32(catagories[i - 1].getAddress());
                 newAddress += catagories[i - 1].getSize();
 
-                catagories[i].setAddress(newAddress);
+                // Check to make sure this address will not go outside of its bank (32k)
+                int ptr = catagories[i].pointer.getAddress();
+                int bank = catagories[i].pointer.getBankAddress();
+                if (bank * 32768 + TextStart < ptr)
+                {
+                    Console.WriteLine("Catagory outside of range of bank! --" + catagories[i].getName());
 
+                }
+
+                catagories[i].setAddress(newAddress);
                 catagories[i].pointer.setAddress(newAddress);
-                Console.WriteLine(newAddress);
 
                 memorySize += catagories[i].getSize();
             }
