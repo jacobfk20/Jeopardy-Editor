@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lstCatagories = new System.Windows.Forms.ListBox();
             this.gbxQA = new System.Windows.Forms.GroupBox();
+            this.txtCatDisplayName = new System.Windows.Forms.TextBox();
+            this.txtCatName = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.gbxPointerInfo = new System.Windows.Forms.GroupBox();
             this.lblSnesAddress = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -87,10 +91,7 @@
             this.rebuildStructureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openRom = new System.Windows.Forms.OpenFileDialog();
             this.lblRomName = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtCatName = new System.Windows.Forms.TextBox();
-            this.txtCatDisplayName = new System.Windows.Forms.TextBox();
+            this.lblInvalidPointers = new System.Windows.Forms.Label();
             this.gbxQA.SuspendLayout();
             this.gbxPointerInfo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -145,6 +146,39 @@
             this.gbxQA.TabIndex = 1;
             this.gbxQA.TabStop = false;
             this.gbxQA.Text = "Questions and Answers";
+            // 
+            // txtCatDisplayName
+            // 
+            this.txtCatDisplayName.Location = new System.Drawing.Point(597, 248);
+            this.txtCatDisplayName.Multiline = true;
+            this.txtCatDisplayName.Name = "txtCatDisplayName";
+            this.txtCatDisplayName.Size = new System.Drawing.Size(105, 52);
+            this.txtCatDisplayName.TabIndex = 34;
+            // 
+            // txtCatName
+            // 
+            this.txtCatName.Location = new System.Drawing.Point(528, 222);
+            this.txtCatName.Name = "txtCatName";
+            this.txtCatName.Size = new System.Drawing.Size(174, 20);
+            this.txtCatName.TabIndex = 33;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(510, 248);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(75, 13);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "Display Name:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(484, 225);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(38, 13);
+            this.label20.TabIndex = 31;
+            this.label20.Text = "Name:";
             // 
             // gbxPointerInfo
             // 
@@ -616,50 +650,29 @@
             // lblRomName
             // 
             this.lblRomName.AutoSize = true;
-            this.lblRomName.Location = new System.Drawing.Point(826, 61);
+            this.lblRomName.Location = new System.Drawing.Point(798, 61);
             this.lblRomName.Name = "lblRomName";
             this.lblRomName.Size = new System.Drawing.Size(85, 13);
             this.lblRomName.TabIndex = 9;
             this.lblRomName.Text = "No Rom Loaded";
             // 
-            // label20
+            // lblInvalidPointers
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(484, 225);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(38, 13);
-            this.label20.TabIndex = 31;
-            this.label20.Text = "Name:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(510, 248);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(75, 13);
-            this.label21.TabIndex = 32;
-            this.label21.Text = "Display Name:";
-            // 
-            // txtCatName
-            // 
-            this.txtCatName.Location = new System.Drawing.Point(528, 222);
-            this.txtCatName.Name = "txtCatName";
-            this.txtCatName.Size = new System.Drawing.Size(174, 20);
-            this.txtCatName.TabIndex = 33;
-            // 
-            // txtCatDisplayName
-            // 
-            this.txtCatDisplayName.Location = new System.Drawing.Point(597, 248);
-            this.txtCatDisplayName.Multiline = true;
-            this.txtCatDisplayName.Name = "txtCatDisplayName";
-            this.txtCatDisplayName.Size = new System.Drawing.Size(105, 52);
-            this.txtCatDisplayName.TabIndex = 34;
+            this.lblInvalidPointers.AutoSize = true;
+            this.lblInvalidPointers.ForeColor = System.Drawing.Color.Red;
+            this.lblInvalidPointers.Location = new System.Drawing.Point(798, 35);
+            this.lblInvalidPointers.Name = "lblInvalidPointers";
+            this.lblInvalidPointers.Size = new System.Drawing.Size(141, 13);
+            this.lblInvalidPointers.TabIndex = 10;
+            this.lblInvalidPointers.Text = "[UNALAIGNED POINTERS]";
+            this.lblInvalidPointers.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 506);
+            this.Controls.Add(this.lblInvalidPointers);
             this.Controls.Add(this.lblRomName);
             this.Controls.Add(this.lblSizeChar);
             this.Controls.Add(this.label13);
@@ -752,6 +765,7 @@
         private System.Windows.Forms.TextBox txtCatName;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblInvalidPointers;
     }
 }
 

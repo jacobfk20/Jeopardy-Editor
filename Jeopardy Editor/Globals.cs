@@ -19,8 +19,8 @@
         /// </summary>
         public const int SOFTWARE_VERSION_MAJOR = 0;
         public const int SOFTWARE_VERSION_MINOR = 4;
-        public const int SOFTWARE_VERSION_SUB = 0;
-        public const string SOFTWARE_VERSION_STRING = "0.4.0";
+        public const int SOFTWARE_VERSION_SUB = 1;
+        public const string SOFTWARE_VERSION_STRING = "0.4.1";
 
         public const string SOFTWARE_TITLE = "Jepardy! Editor for Super Nintendo";
 

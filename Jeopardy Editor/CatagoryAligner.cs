@@ -8,6 +8,9 @@ namespace Jeopardy_Editor
 {
     class CatagoryAligner
     {
+        public int UnalignedPointers { get { return unalaignedPointers; } }
+
+        int unalaignedPointers = 0;
         int TextStart = Globals.ROMFILE_TEXT_BEGIN;
 
         public int RebuildStructure(ref List<Catagory> catagories)
@@ -28,6 +31,7 @@ namespace Jeopardy_Editor
                 if (bank * 32768 + TextStart < ptr)
                 {
                     Console.WriteLine("Catagory outside of range of bank! --" + catagories[i].getName());
+                    unalaignedPointers++;
 
                 }
 

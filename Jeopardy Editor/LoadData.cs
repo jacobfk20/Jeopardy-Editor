@@ -14,7 +14,9 @@ namespace Jeopardy_Editor
         public int DeadSpace { get { return deadSpace; } }
         public string RomName { get { return romName; } }
         public int TotalSize { get { return totalSize; } }
+        public int UnalignedPointers { get { return unalignedPointers; } }
 
+        int unalignedPointers = 0;
         int deadSpace = 0;
         string romName = "";
         int totalCatagories = 0;
@@ -177,8 +179,6 @@ namespace Jeopardy_Editor
             // Return negative if either is null
             if (Pointers == null || Catagories == null) return -1;
 
-            Console.WriteLine(Pointers[0].To() + "   " + Pointers[0].getPoint());
-
             int totalFound = 0;
             for (int p = 0; p < Pointers.Count; p++)
             {
@@ -197,7 +197,10 @@ namespace Jeopardy_Editor
                     }
                 }
 
-                if (!bFound) Catagories[p].pointer = Pointers[p];
+                if (!bFound && Catagories.Count > p) Catagories[p].pointer = Pointers[p];
+
+                // Final check:  Make sure current cat and point are alaigned
+                if (Catagories[p].checkPointerAligned() == false) unalignedPointers++;
             }
 
             return totalFound;

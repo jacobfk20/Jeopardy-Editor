@@ -17,6 +17,7 @@ namespace Jeopardy_Editor
         const int END_OF_TEXT = Globals.ROMFILE_TEXT_END;
         string RomName = "";
         string RomFile = "";
+        int FreeSpace = 0;
 
         int SelectedCatagory = 0;
 
@@ -109,6 +110,19 @@ namespace Jeopardy_Editor
 
         private void menuSaveToRom_Click(object sender, EventArgs e)
         {
+            // Rebuild Pointer Structure before save.
+            rebuildStructureToolStripMenuItem.PerformClick();
+
+            // Check if the new save will fit into ROM
+            if (FreeSpace > 0)
+            {
+               DialogResult dr = MessageBox.Show("There is not enough space available in this ROM to store these modifications.  You need to free up "
+                    + FreeSpace + " bytes.  Do you wish to save to ROM anyway?  Saving now could cause corruption!",
+                    "Save To ROM", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.No) return;
+            }
+
             SaveData save = new SaveData(ref Catagories);
             save.ToRom(RomFile);
         }
@@ -151,6 +165,14 @@ namespace Jeopardy_Editor
                 lblSizeChar.Text = load.TotalSize.ToString();
 
                 lblDeadSpace.Text = Convert.ToString(load.DeadSpace);
+                FreeSpace = load.DeadSpace;
+
+                // If pointers are unaligned; display its error message
+                if (load.UnalignedPointers > 0){
+                    lblInvalidPointers.Text = "[" + load.UnalignedPointers + " UNALIGNED POINTERS]";
+                    lblInvalidPointers.Visible = true;
+                } else
+                    lblInvalidPointers.Visible = false;
 
                 onRomLoad();
             }
@@ -200,6 +222,14 @@ namespace Jeopardy_Editor
                 lblDeadSpace.Text = size * - 1 + " bytes";
                 lblDeadSpace.ForeColor = Color.Black;
             }
+
+            if (c.UnalignedPointers > 0) {
+                lblInvalidPointers.Text = "[" + c.UnalignedPointers + " UNALAIGNED POINTERS]";
+                lblInvalidPointers.Visible = true;
+            } else
+                lblInvalidPointers.Visible = false;
+
+            FreeSpace = size;
         }
 
         private void onRomLoad()
@@ -225,6 +255,7 @@ namespace Jeopardy_Editor
             rebuildStructureToolStripMenuItem.Enabled = false;
             lblRomName.Text = "No Rom Loaded";
             gbxQA.Enabled = false;
+            lblInvalidPointers.Visible = false;
             txtQ1.Clear();
             txtQ2.Clear();
             txtQ3.Clear();
