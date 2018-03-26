@@ -19,6 +19,8 @@ namespace Jeopardy_Editor
         string RomFile = "";
         int FreeSpace = 0;
 
+        string WorkingXmlFile = "Jeopardy! Save.xml";
+
         int SelectedCatagory = 0;
 
         List<Catagory> Catagories = new List<Catagory>();
@@ -105,7 +107,7 @@ namespace Jeopardy_Editor
         private void menuSaveToXml_Click(object sender, EventArgs e)
         {
             SaveData save = new SaveData(ref Catagories);
-            save.ToXML();
+            save.ToXML(WorkingXmlFile);
         }
 
         private void menuSaveToRom_Click(object sender, EventArgs e)
@@ -129,8 +131,10 @@ namespace Jeopardy_Editor
 
         private void menuLoadXml_Click(object sender, EventArgs e)
         {
+            openXml.ShowDialog();
+            string xmlFile = openXml.FileName;
             LoadData load = new LoadData(ref Catagories, ref Pointers);
-            if (load.FromXML()) reloadCatagoryList();
+            if (load.FromXML(xmlFile)) reloadCatagoryList();
         }
 
         private void menuOpenRom_Click(object sender, EventArgs e)
@@ -268,5 +272,25 @@ namespace Jeopardy_Editor
             txtA5.Clear();
         }
 
+        private void menuSaveToXmlAs_Click(object sender, EventArgs e)
+        {
+            openXml.CheckFileExists = false;
+            openXml.ShowDialog();
+            
+            string savename = openXml.FileName;
+            SaveData save = new SaveData(ref Catagories);
+            save.ToXML(savename);
+            openXml.CheckFileExists = true;
+            WorkingXmlFile = savename;
+        }
+
+        private void menuAbout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                Globals.SOFTWARE_ABOUT + "\n\nCreated by: " + Globals.SOFTWARE_CREATOR + " on " + Globals.SOFTWARE_DATE + "\nBuild date: " + Globals.SOFTWARE_LASTDATE,
+                "About " + Globals.SOFTWARE_TITLE, 
+                MessageBoxButtons.OK
+                );
+        }
     }
 }

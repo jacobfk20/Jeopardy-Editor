@@ -92,6 +92,10 @@
             this.openRom = new System.Windows.Forms.OpenFileDialog();
             this.lblRomName = new System.Windows.Forms.Label();
             this.lblInvalidPointers = new System.Windows.Forms.Label();
+            this.openXml = new System.Windows.Forms.OpenFileDialog();
+            this.menuSaveToXmlAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxQA.SuspendLayout();
             this.gbxPointerInfo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -528,7 +532,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.editToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(963, 24);
@@ -552,7 +557,7 @@
             // menuOpenRom
             // 
             this.menuOpenRom.Name = "menuOpenRom";
-            this.menuOpenRom.Size = new System.Drawing.Size(131, 22);
+            this.menuOpenRom.Size = new System.Drawing.Size(180, 22);
             this.menuOpenRom.Text = "Open Rom";
             this.menuOpenRom.Click += new System.EventHandler(this.menuOpenRom_Click);
             // 
@@ -560,36 +565,37 @@
             // 
             this.menuCloseRom.Enabled = false;
             this.menuCloseRom.Name = "menuCloseRom";
-            this.menuCloseRom.Size = new System.Drawing.Size(131, 22);
+            this.menuCloseRom.Size = new System.Drawing.Size(180, 22);
             this.menuCloseRom.Text = "Close Rom";
             this.menuCloseRom.Click += new System.EventHandler(this.menuCloseRom_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuSaveToXml,
+            this.menuSaveToXmlAs,
             this.menuSaveToRom});
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // menuSaveToXml
             // 
             this.menuSaveToXml.Name = "menuSaveToXml";
-            this.menuSaveToXml.Size = new System.Drawing.Size(115, 22);
+            this.menuSaveToXml.Size = new System.Drawing.Size(180, 22);
             this.menuSaveToXml.Text = "To Xml";
             this.menuSaveToXml.Click += new System.EventHandler(this.menuSaveToXml_Click);
             // 
             // menuSaveToRom
             // 
             this.menuSaveToRom.Name = "menuSaveToRom";
-            this.menuSaveToRom.Size = new System.Drawing.Size(115, 22);
+            this.menuSaveToRom.Size = new System.Drawing.Size(180, 22);
             this.menuSaveToRom.Text = "To Rom";
             this.menuSaveToRom.Click += new System.EventHandler(this.menuSaveToRom_Click);
             // 
@@ -597,19 +603,19 @@
             // 
             this.menuLoadXml.Enabled = false;
             this.menuLoadXml.Name = "menuLoadXml";
-            this.menuLoadXml.Size = new System.Drawing.Size(131, 22);
+            this.menuLoadXml.Size = new System.Drawing.Size(180, 22);
             this.menuLoadXml.Text = "Load Xml";
             this.menuLoadXml.Click += new System.EventHandler(this.menuLoadXml_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(131, 22);
+            this.menuExit.Size = new System.Drawing.Size(180, 22);
             this.menuExit.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -666,6 +672,34 @@
             this.lblInvalidPointers.TabIndex = 10;
             this.lblInvalidPointers.Text = "[UNALAIGNED POINTERS]";
             this.lblInvalidPointers.Visible = false;
+            // 
+            // openXml
+            // 
+            this.openXml.FileName = "jeopardy! Save.xml";
+            this.openXml.Filter = "Jeopardy! Xml (*.xml)|*.xml";
+            this.openXml.Title = "Open Jeopardy! XML save data";
+            // 
+            // menuSaveToXmlAs
+            // 
+            this.menuSaveToXmlAs.Name = "menuSaveToXmlAs";
+            this.menuSaveToXmlAs.Size = new System.Drawing.Size(180, 22);
+            this.menuSaveToXmlAs.Text = "To Xml As";
+            this.menuSaveToXmlAs.Click += new System.EventHandler(this.menuSaveToXmlAs_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuAbout});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // menuAbout
+            // 
+            this.menuAbout.Name = "menuAbout";
+            this.menuAbout.Size = new System.Drawing.Size(180, 22);
+            this.menuAbout.Text = "About";
+            this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
             // 
             // Form1
             // 
@@ -766,6 +800,10 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblInvalidPointers;
+        private System.Windows.Forms.OpenFileDialog openXml;
+        private System.Windows.Forms.ToolStripMenuItem menuSaveToXmlAs;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuAbout;
     }
 }
 

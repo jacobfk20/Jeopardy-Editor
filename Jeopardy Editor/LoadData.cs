@@ -50,15 +50,24 @@ namespace Jeopardy_Editor
                 // Get fullname; address; size
                 xm.ReadToFollowing("name");
                 string xname = xm.ReadInnerXml();
+                xname = formatXmlData(xname);
                 if (xname == "") break;
-                Catagories[i].setName(xname);
+
+                xm.ReadToFollowing("fullname");
+                string fname = xm.ReadInnerXml();
+                fname = fname.Substring(0, fname.IndexOf("\\"));
+                fname = formatXmlData(fname);
+                Catagories[i].setName(xname, fname);
 
 
                 // Move to Questions
                 xm.ReadToFollowing("Questions");
                 for (int x = 0; x < 5; x++) {
                     xm.ReadToFollowing("question");
-                    Catagories[i].setQuestion(x, xm.ReadInnerXml());
+                    // Prepare format:
+                    string cat = xm.ReadInnerXml();
+                    cat = formatXmlData(cat);
+                    Catagories[i].setQuestion(x, cat);
                 }
 
                 // Move to Answers
@@ -68,6 +77,7 @@ namespace Jeopardy_Editor
                     xm.ReadToFollowing("answer");
                     xm.ReadToFollowing("value");
                     string v = xm.ReadInnerXml();
+                    v = formatXmlData(v);
                     xm.ReadToFollowing("type");
                     string t = xm.ReadInnerXml();
                     Catagories[i].setAnswer(x, v, Convert.ToInt32(t));
@@ -204,6 +214,19 @@ namespace Jeopardy_Editor
             }
 
             return totalFound;
+        }
+
+        /// <summary>
+        ///  Format XML data to remove XML attributes like "&amp;" and "|"
+        /// </summary>
+        /// <param name="data">string data from XML file</param>
+        /// <returns>Clean string of xml data</returns>
+        private string formatXmlData(string data)
+        {
+            while (data.Contains("|")) data = data.Replace("|", "r");
+            while (data.Contains("&amp;")) data = data.Replace("&amp;", "&");
+
+            return data;
         }
 
     }
